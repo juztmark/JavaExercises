@@ -36,6 +36,12 @@ public class Main {
         System.out.println(checkPalindrome("scary"));
         System.out.println(checkPalindrome("reviver"));
         System.out.println(checkPalindrome("stressed"));
+
+        System.out.println("Capture the Rook:");
+        System.out.println(canCapture(new String[] {"A8", "E8"}));
+        System.out.println(canCapture(new String[] {"A1", "B2"}));
+        System.out.println(canCapture(new String[] {"H4", "H3"}));
+        System.out.println(canCapture(new String[] {"F5", "C8"}));
     }
     private static double totalDistance(double stepHeight, double stepLength, double towerHeight) {
         var numOfSteps = towerHeight / stepHeight;
@@ -75,4 +81,10 @@ public class Main {
         }
         return true;
     }
+    private static boolean canCapture(String[] input) {
+        char[] rook1 = input[0].toCharArray();
+        char[] rook2 = input[1].toCharArray();
+        return rook1[0] == rook2[0] || rook1[1] == rook2[1];
+    }
+
 }
