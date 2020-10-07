@@ -7,10 +7,10 @@ public class Shiritori {
 
     public void runGame(String[] words) {
         for (String word:words) {
+            word = word.trim();
             if (gameOver || !word.chars().allMatch(Character::isLetter)) {
-                System.out.println(endGame()); return;
-            }
-            System.out.println(play(word.trim()));
+                System.out.println(endGame()); return; }
+            System.out.println(play(word));
         }
     }
     private boolean canAdd(String word) {
