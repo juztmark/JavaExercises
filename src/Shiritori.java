@@ -7,32 +7,32 @@ public class Shiritori {
 
     public void runGame(String[] words) {
         for (String word:words) {
-            if (gameOver) return;
-            System.out.println(play(word.trim().toLowerCase()));
+            if (gameOver || !word.chars().allMatch(Character::isLetter)) {
+                System.out.println(endGame()); return;
+            }
+            System.out.println(play(word.trim()));
         }
     }
-
-    private String play(String word) {
-        for (var i = 0; i < word.length(); i++) {
-            if(!Character.isLetter(word.charAt(i))) {
-                gameOver = true;
-                return "GameOver";
-            }
-        }
-        if(words.isEmpty()){
-            words.add(word);
-            return "Correct word. Used words: " + getWords();
-        }
-        var lastWord = words.get(words.size() - 1);
-        if (word.charAt(0) == lastWord.charAt(lastWord.length() - 1)) {
-            words.add(word);
-            return "Correct word. Used words: " + getWords();
-        }
+    private boolean canAdd(String word) {
+        if(words.isEmpty()) return true;
+        if(words.contains(word)) return false;
+        var lastWord = words.get(words.size() - 1).toLowerCase();
+        return word.toLowerCase().charAt(0) == lastWord.charAt(lastWord.length() - 1);
+    }
+    private String endGame() {
         gameOver = true;
         return "GameOver";
     }
+    private String correctWord(String word) {
+        words.add(word);
+        return "Correct word. Used words: " + getWords();
+    }
 
-    public String getWords() {
+    private String play(String word) {
+        return canAdd(word) ? correctWord(word) : endGame();
+    }
+
+    private String getWords() {
         return Arrays.toString(words.toArray());
     }
     public String restart() {
