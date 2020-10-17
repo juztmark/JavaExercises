@@ -1,3 +1,5 @@
+package main;
+
 public class Triangle {
     private double sideA;
     private double sideB;

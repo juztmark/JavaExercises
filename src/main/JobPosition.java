@@ -1,3 +1,5 @@
+package main;
+
 public class JobPosition {
     private String name;
     private double salary;

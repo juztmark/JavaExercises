@@ -1,7 +1,12 @@
+package main;
+
 import warrior.Item;
 import warrior.Warrior;
 
-import java.util.*;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.GregorianCalendar;
 
 public class Exercises {
 
