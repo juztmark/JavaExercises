@@ -12,7 +12,7 @@ public class Job {
     }
 
     public String getInfo() {
-        return String.format("%s’s salary is %s and bonus is %d", jobType.toString(), salary, bonus);
+        return String.format("%s’s salary is %s and bonus is %d", jobType.name, salary, bonus);
     }
 
     public float getSalary() {
